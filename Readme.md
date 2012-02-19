@@ -1,10 +1,44 @@
 [![Build Status](https://secure.travis-ci.org/vesln/exports.png)](http://travis-ci.org/vesln/exports)
 
-# exports
+# exports 
 
 ## Description
 
+Easy data exports to your client-side scripts for your express based app.
+
 ## Synopsis
+
+```javascript
+
+var express = require('express');
+var exports = require('exports');
+
+var app = express.createServer();
+
+app.dynamicHelpers({
+  include_exports: exports.helper('App') // App is the namespace.
+});
+
+exports.set('title', 'I am awesome.'); // Global export.
+
+app.get('/', [exports.middleware], function(req, res) {
+  res.exports.random = Math.random(); // Export per request.
+  res.rend('index');
+});
+
+```
+
+layout.jade:
+
+```
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    != include_exports
+  body!= body
+```
 
 ## Requirements
 
