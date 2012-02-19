@@ -42,11 +42,13 @@ Result:
 
 ```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html>
 <head>
+
 <script type="text/javascript">
-  var App = {"title": "I am awesome.", "random": 0.27449309756048024};</script>
+  var App = {"title": "I am awesome.", "random": 0.27449309756048024};
+</script>
+
 </head>
 <body></body>
 </html>
