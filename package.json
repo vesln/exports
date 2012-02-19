@@ -1,0 +1,26 @@
+{
+    "name": "exports"
+  , "version": "0.0.0"
+  , "description": "Easy data exports to your client-side scripts."
+  , "keywords": ["exports", "javascript exports"]
+  , "author": "Veselin Todorov <hi@vesln.com>"
+  , "dependencies": {
+  }
+  , "devDependencies": {
+      "mocha": "0.x.x"
+    , "chai": "*"
+    , "jack": "*"
+  }
+  , "repository" : {
+      "type" : "git"
+    , "url" : "http://github.com/vesln/exports.git"
+  }
+  , "homepage": "http://github.com/vesln/exports"
+  , "scripts": {
+      "test": "make test"
+  }
+  , "main": "./lib/exports.js"
+  , "engines": { 
+      "node": ">= 0.6.0"
+  }
+}
