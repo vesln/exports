@@ -28,6 +28,14 @@ describe('exports', function() {
   });
 
   describe('when exporting data', function() {
+    it('should presist global exports', function() {
+      var helper = exports.helper();
+      var res = {exports: {}};
+      exports.set('foo', 3);
+      helper({}, res).should.eql('<script type="text/javascript">var exports = {"foo":3};</script>');
+      exports.reset();
+    });
+
     it('should convert properties to json', function() {
       var res = {exports: {}};
       var helper = exports.helper();
