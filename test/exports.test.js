@@ -18,24 +18,28 @@ var should = require('chai').should();
 var exports = require('../lib/exports');
 
 describe('exports', function() {
+  describe('when registering as a middleware', function() {
+    it('should create exports object', function() {
+      var res = {};
+      exports.middleware({}, res, function() {
+        res.exports.should.eql({});
+      });
+    });
+  });
+
   describe('when exporting data', function() {
     it('should convert properties to json', function() {
-      exports.foo = 3;
+      var res = {exports: {}};
       var helper = exports.helper();
-      helper().should.eql('<script type="text/javascript">var exports = {"foo":3};</script>');
-    });
-
-    it('should restore the blank state of the exports object', function() {
-      exports.foo = 3;
-      var helper = exports.helper();
-      helper();
-      helper().should.eql('<script type="text/javascript">var exports = {};</script>');
+      res.exports = {foo: 3};
+      helper({}, res).should.eql('<script type="text/javascript">var exports = {"foo":3};</script>');
     });
 
     it('should support custom namespace', function() {
       var helper = exports.helper('Name');
-      exports.bar = {};
-      helper().should.eql('<script type="text/javascript">var Name = {"bar":{}};</script>');
+      var res = {exports: {}};
+      res.exports.bar = {};
+      helper({}, res).should.eql('<script type="text/javascript">var Name = {"bar":{}};</script>');
     });
   });
 });
